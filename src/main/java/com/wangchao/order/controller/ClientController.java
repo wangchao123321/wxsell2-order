@@ -3,12 +3,19 @@ package com.wangchao.order.controller;
 import com.netflix.discovery.converters.Auto;
 import com.wangchao.order.client.ProductClient;
 import com.wangchao.order.config.RestTemplateConfig;
+import com.wangchao.order.dataobject.ProductInfo;
+import com.wangchao.order.dto.CartDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 public class ClientController {
@@ -41,5 +48,23 @@ public class ClientController {
 
         System.out.println(result);
         return result;
+    }
+
+
+    @GetMapping("/getProductList")
+    public void listForOrder(){
+        List<ProductInfo> productInfos = productClient.listForOrder(Arrays.asList("123456", "123457"));
+        for (ProductInfo productInfo : productInfos) {
+            System.out.println(productInfo.toString());
+        }
+    }
+
+
+    @GetMapping("/decreaseStock")
+    public void decreaseStock(){
+        CartDTO cartDTO=new CartDTO("123457",5);
+        List<CartDTO> list=new ArrayList<>();
+        list.add(cartDTO);
+        productClient.decreaseStock(list);
     }
 }
