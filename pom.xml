@@ -56,10 +56,13 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
+			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
+			<version>1.4.4.RELEASE</version>
 		</dependency>
+
 
 	</dependencies>
 

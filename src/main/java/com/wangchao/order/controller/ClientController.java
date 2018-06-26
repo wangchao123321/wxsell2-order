@@ -1,6 +1,7 @@
 package com.wangchao.order.controller;
 
 import com.netflix.discovery.converters.Auto;
+import com.wangchao.order.client.ProductClient;
 import com.wangchao.order.config.RestTemplateConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -18,6 +19,9 @@ public class ClientController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private ProductClient productClient;
+
     @GetMapping("/getProductMsg")
     public String getProductMsg(){
         // 第一种方式(直接使用 restTemplate,url写死)
@@ -31,7 +35,9 @@ public class ClientController {
 //        String result=restTemplate.getForObject(url,String.class);
 
         // 第三种方式(利用LoadBalanced,可在restTemplate里使用应用的名字)
-        String result=restTemplate.getForObject("http://PRODUCT/msg",String.class);
+//        String result=restTemplate.getForObject("http://PRODUCT/msg",String.class);
+
+        String result=productClient.productMsg();
 
         System.out.println(result);
         return result;
