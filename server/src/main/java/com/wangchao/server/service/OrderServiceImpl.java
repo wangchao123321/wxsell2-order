@@ -1,10 +1,8 @@
 package com.wangchao.server.service;
 
-import com.netflix.discovery.converters.Auto;
 import com.wangchao.server.client.ProductClient;
 import com.wangchao.server.dataobject.OrderDetail;
 import com.wangchao.server.dataobject.OrderMaster;
-import com.wangchao.server.dataobject.ProductInfo;
 import com.wangchao.server.dto.CartDTO;
 import com.wangchao.server.dto.OrderDTO;
 import com.wangchao.server.enums.OrderStatusEnum;

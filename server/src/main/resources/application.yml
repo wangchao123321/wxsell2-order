@@ -13,6 +13,11 @@ spring:
     port: 5672
     username: guest
     password: guest
+#  cloud:
+#    stream:
+#      bindings:
+#        output:
+#         destination: sink-channel
 eureka:
   client:
     service-url:

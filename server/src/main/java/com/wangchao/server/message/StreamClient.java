@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public interface StreamClient {
 
-    @Input("myMessage")
+    String INPUT="myMessage";
+
+    @Input(StreamClient.INPUT)
     SubscribableChannel input();
 
-    @Output("myMessage")
+    @Output(StreamClient.INPUT)
     MessageChannel output();
 }

@@ -1,6 +1,5 @@
 package com.wangchao.server.client;
 
-import com.wangchao.server.dataobject.ProductInfo;
 import com.wangchao.server.dto.CartDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,7 @@ public interface ProductClient {
     String productMsg();
 
     @PostMapping("/product/listForOrder")
-    List<ProductInfo> listForOrder(List<String> productIdList);
+    List<ProducInfo> listForOrder(List<String> productIdList);
 
     @PostMapping("/product/decreaseStock")
     void decreaseStock(@RequestBody List<CartDTO> cartDTOList);
