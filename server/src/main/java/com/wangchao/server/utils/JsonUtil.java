@@ -1,6 +1,7 @@
 package com.wangchao.server.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -31,6 +32,18 @@ public class JsonUtil {
 		try {
 
 			return objectMapper.readValue(string,classType);
+
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+	public static Object fromJson(String string,TypeReference typeReference){
+		try {
+
+			return objectMapper.readValue(string,typeReference);
 
 		}catch (IOException e){
 			e.printStackTrace();
